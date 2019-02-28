@@ -1,10 +1,8 @@
 "use strict";
-
 const home = {
     template: `<section landing-animation class="landing--container">
     <!-- <section ng-show="$ctrl.showTitle" class="title">BURGER BURNER</section> -->
     <section id="home--title">BURGER BURNER</section>
-
     <section class="intro--container--container">
         <section class="intro--container">
             <section class="intro intro--are">are</section>
@@ -15,7 +13,6 @@ const home = {
             <section class="intro intro--qs">???</section>
         </section>
     </section>
-
     <section class="instructions">
             <!-- <h2 class="instructions-heading">Are you ready to burn??</h2> -->
             <p class="instructions__text">Want a guilt-free meal? Find out how far away you need to park in order to burn off those calories you're about to eat!</p>

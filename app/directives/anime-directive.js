@@ -685,12 +685,9 @@ function animeDirective($window) {
                         plate.attributes[0].value++;
                     }
                 };
-
             })
         }
     }
 }
-
-
 
 angular.module("App").directive("animeDirective", animeDirective);

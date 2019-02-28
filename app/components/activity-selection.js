@@ -1,5 +1,4 @@
 "use strict";
-
 const activitySelection = {
     template: `
         <section ng-click="$ctrl.homePage();"  class="title">BURGER BURNER</section>
@@ -43,7 +42,6 @@ const activitySelection = {
         vm.homePage = () => {
             Service.goHome();
         }
-
     }]
 }
 

@@ -1,14 +1,11 @@
 "use strict";
-
 const results = {
     template: `
     <section ng-click="$ctrl.homePage();" class="title">BURGER BURNER</section>
-
     <section class="results-intro" ng-show="$ctrl.introShow">
             <p>You need to park <span>{{$ctrl.totalDistance}}</span> miles away in order to burn off <span>{{$ctrl.calorieSum}}</span> calories.</p>
             <button class="results-go-btn" ng-click="$ctrl.showPage();">Burn it off!</button>
     </section>
-
     <section class="results-wrapper" ng-show="$ctrl.pageShow">
         <section class="progress-bar-container">
             <section class="results-plate">
@@ -18,15 +15,12 @@ const results = {
                 <span id="progress" ></span>
             </section>
         </section>
-    
         <section class="distance">
            <p class="results-text"> You have <br> <span id="miles"> {{ $ctrl.distance }} </span> <br> miles to {{ $ctrl.activitySelection }} to your car! </p>
         </section>
-
         <section ng-show="$ctrl.buttonShow" class="btn-container">
             <button ng-click="$ctrl.homePage();" class="restart-btn">Restart</button>
         </section>
-        
         <section class="results-container">
             <section class="movement-container">
                 <section class="skyline-container">
@@ -38,7 +32,6 @@ const results = {
             </section>
             <img class="car" src="app/images/sprite_car.png">
         </section>
-
     </section>
     `,
     controller: ["Service", "$location", "$interval", function (Service, $location, $interval) {
@@ -91,15 +84,12 @@ const results = {
             clearInterval(tID);
         } //end of stopAnimate()
 
-
         function animateSkip() {
-
             var position = 160; //start position for the image slicer
             const interval = 200; //100 ms of interval for the setInterval()
             const diff = 160; //diff as a variable for position offset
 
             tID = setInterval(() => {
-
                 document.getElementById("skip").style.backgroundPosition =
                     `-${position}px 0px`;
 
@@ -116,13 +106,11 @@ const results = {
         } //end of animateScript()
 
         function animateCrawl() {
-
             var position = 240; //start position for the image slicer
             const interval = 200; //100 ms of interval for the setInterval()
             const diff = 240; //diff as a variable for position offset
 
             tID = setInterval(() => {
-
                 document.getElementById("crawl").style.backgroundPosition =
                     `-${position}px 0px`;
 
@@ -139,13 +127,11 @@ const results = {
         } //end of animateScript()
 
         function animateWalk() {
-
             var position = 160; //start position for the image slicer
             const interval = 200; //100 ms of interval for the setInterval()
             const diff = 160; //diff as a variable for position offset
 
             tID = setInterval(() => {
-
                 document.getElementById("walk").style.backgroundPosition =
                     `-${position}px 0px`;
 
@@ -163,13 +149,10 @@ const results = {
 
         if (vm.activitySelection === "walk") {
             animateWalk();
-
         } else if (vm.activitySelection === "crawl") {
             animateCrawl();
-
         } else if (vm.activitySelection === "skip") {
             animateSkip();
-
         };
 
         vm.homePage = () => {
@@ -178,7 +161,6 @@ const results = {
         
         vm.plate = Service.getPlate();
     }]
-
 }
 
 angular.module("App")

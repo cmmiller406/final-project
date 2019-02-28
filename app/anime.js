@@ -23,7 +23,6 @@
 }(this, () => {
 
   // Defaults
-
   const defaultInstanceSettings = {
     update: undefined,
     begin: undefined,
@@ -47,7 +46,6 @@
   let transformString;
 
   // Utils
-
   function stringContains(str, text) {
     return str.indexOf(text) > -1;
   }
@@ -68,9 +66,7 @@
   }
 
   // BezierEasing https://github.com/gre/bezier-easing
-
   const bezier = (() => {
-
     const kSplineTableSize = 11;
     const kSampleStepSize = 1.0 / (kSplineTableSize - 1.0);
 
@@ -102,7 +98,6 @@
     }
 
     function bezier(mX1, mY1, mX2, mY2) {
-
       if (!(0 <= mX1 && mX1 <= 1 && 0 <= mX2 && mX2 <= 1)) return;
       let sampleValues = new Float32Array(kSplineTableSize);
 
@@ -113,7 +108,6 @@
       }
 
       function getTForX(aX) {
-
         let intervalStart = 0.0;
         let currentSample = 1;
         const lastSample = kSplineTableSize - 1;
@@ -123,7 +117,6 @@
         }
 
         --currentSample;
-
         const dist = (aX - sampleValues[currentSample]) / (sampleValues[currentSample + 1] - sampleValues[currentSample]);
         const guessForT = intervalStart + dist * kSampleStepSize;
         const initialSlope = getSlope(guessForT, mX1, mX2);
@@ -135,7 +128,6 @@
         } else {
           return binarySubdivide(aX, intervalStart, intervalStart + kSampleStepSize, mX1, mX2);
         }
-
       }
 
       return x => {
@@ -144,11 +136,8 @@
         if (x === 1) return 1;
         return calcBezier(getTForX(x), mY1, mY2);
       }
-
     }
-
     return bezier;
-
   })();
 
   const easings = (() => {
@@ -207,13 +196,10 @@
         functions['ease'+type+names[i]] = is.fnc(f) ? f : bezier.apply(this, f);
       });
     }
-
     return functions;
-
   })();
 
   // Strings
-
   function stringToHyphens(str) {
     return str.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
   }
@@ -229,7 +215,6 @@
   }
 
   // Arrays
-
   function filterArray(arr, callback) {
     const len = arr.length;
     const thisArg = arguments.length >= 2 ? arguments[1] : void 0;
@@ -261,7 +246,6 @@
   }
 
   // Objects
-
   function cloneObject(o) {
     let clone = {};
     for (let p in o) clone[p] = o[p];
@@ -281,7 +265,6 @@
   }
 
   // Colors
-
   function rgbToRgba(rgbValue) {
     const rgb = /rgb\((\d+,\s*[\d]+,\s*[\d]+)\)/g.exec(rgbValue);
     return rgb ? `rgba(${rgb[1]},1)` : rgbValue;

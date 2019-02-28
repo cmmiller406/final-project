@@ -1,5 +1,4 @@
 "use strict";
-
 function Service($http, $q, $location) {
     const self = this;
 
@@ -92,10 +91,7 @@ function Service($http, $q, $location) {
         self.sum = 0;
         $location.path("/food-selection");
     };
-
-
 }
-
 
 angular.module("App")
     .service("Service", Service)
